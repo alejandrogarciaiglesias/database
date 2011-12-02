@@ -170,6 +170,24 @@ abstract class Kohana_Database_Result implements Countable, Iterator, SeekableIt
 	}
 
 	/**
+	 * Return all of the rows in the result as an array
+	 * and also each of those array elements that are
+	 * models as array too.
+	 *
+	 * @return  array
+	 */
+	public function each_as_array()
+	{
+		$results = array();
+		foreach ($this as $row)
+		{
+			$results[] = $row->as_array();
+		}
+
+		return $results;
+	}
+
+	/**
 	 * Return the named column from the current row.
 	 *
 	 *     // Get the "id" value
